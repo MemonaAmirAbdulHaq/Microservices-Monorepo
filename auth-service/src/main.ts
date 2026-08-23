@@ -13,8 +13,7 @@ async function bootstrap() {
     }
   )
   await app.listen();
-  console.log('Auth Microservices is listening via TCP...')
- 
+  console.log('Auth Microservices is listening via TCP...') 
 
 }
 
