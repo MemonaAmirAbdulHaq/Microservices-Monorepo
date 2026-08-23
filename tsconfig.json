@@ -23,6 +23,30 @@
     },
     {
       "path": "./inventory-service"
+    },
+    {
+      "path": "./payment-service-e2e"
+    },
+    {
+      "path": "./payment-service"
+    },
+    {
+      "path": "./checkout-service-e2e"
+    },
+    {
+      "path": "./checkout-service"
+    },
+    {
+      "path": "./api-gateway-e2e"
+    },
+    {
+      "path": "./api-gateway"
+    },
+    {
+      "path": "./notification-service-e2e"
+    },
+    {
+      "path": "./notification-service"
     }
   ],
   "compilerOptions": {}
