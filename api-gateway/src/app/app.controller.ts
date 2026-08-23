@@ -1,12 +1,28 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Inject, OnModuleInit } from "@nestjs/common";
+
+import { ClientKafka } from "@nestjs/microservices";
 
 @Controller()
-export class AppController {
-  constructor(private readonly appService: AppService) {}
+export class AppController implements OnModuleInit{
+  constructor(
+    @Inject('KAFKA_SERVICE')
+    private readonly kafkaClient: ClientKafka,
+  ) {};
 
-  @Get()
-  getData() {
-    return this.appService.getData();
+  async onModuleInit() {
+    await this.kafkaClient.connect();
+  }
+  @Get('create-user')
+  async createUser() {
+    const user = {
+      id: 1,
+      name: 'MEmona',
+      email: 'amirmemona6@gmail.com'
+    };
+    this.kafkaClient.emit('user_created', user);
+    return {
+      message: 'User Created Event Published!',
+      user
+    }
   }
 }
